@@ -1,0 +1,7 @@
+<!ENTITY label_statusbar_option "Tornar os ícones da barra de estado móveis">
+<!ENTITY label_menubutton_option "Tornar o botão do menu do Firefox móvel">
+<!ENTITY label_menubar_option "Tornar a barra de menus móvel">
+<!ENTITY label_titlebar_option "Mostrar sempre onome da janela">
+<!ENTITY label_newtab_option "Mostrar &quot;Novo separador&quot; no menu de contexto de separadores">
+<!ENTITY label_fixermenubutton "Botão de menu do Firefox">
+<!ENTITY label_fixerstatusbar "Ícones da barra de estado">

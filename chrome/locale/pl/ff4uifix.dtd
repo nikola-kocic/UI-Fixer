@@ -1,0 +1,7 @@
+<!ENTITY label_statusbar_option "Umożliw przemieszczanie ikon paska stanu">
+<!ENTITY label_menubutton_option "Umożliw przemieszczanie przycisku Firefox">
+<!ENTITY label_menubar_option "Umożliw przemieszczanie paska menu">
+<!ENTITY label_titlebar_option "Wyświetlaj zawsze pasek tytułu okna">
+<!ENTITY label_newtab_option "Wyświetlaj element „Nowa karta” w menu kontekstowym karty">
+<!ENTITY label_fixermenubutton "Przycisk Firefox">
+<!ENTITY label_fixerstatusbar "Ikony paska stanu">

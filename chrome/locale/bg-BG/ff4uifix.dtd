@@ -1,0 +1,7 @@
+<!ENTITY label_statusbar_option "Разрешете статус иконите да се местят">
+<!ENTITY label_menubutton_option "Разрешете Firefox Меню бутона да се мести">
+<!ENTITY label_menubar_option "Разрешете Меню Бар да се мести">
+<!ENTITY label_titlebar_option "Винаги показвай заглавният прозорец">
+<!ENTITY label_newtab_option "Покажи &quot;Нов раздел&quot; в Tab Контекстното меню">
+<!ENTITY label_fixermenubutton "Firefox Меню бутон">
+<!ENTITY label_fixerstatusbar "Статус Бар Икони">

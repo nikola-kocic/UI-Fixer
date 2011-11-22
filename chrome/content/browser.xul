@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="chrome://ff4uifix/skin/style.css" type="text/css"?> 
+ <!DOCTYPE overlay SYSTEM "chrome://ff4uifix/locale/ff4uifix.dtd">
+<overlay id="ff4uifix-overlay"
+  xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+	<script type="application/x-javascript" src="chrome://ff4uifix/content/browser.js"/>
+	
+
+	<!-- Firefox -->
+	<toolbarpalette id="BrowserToolbarPalette">
+		<toolbaritem 
+			id="fixer-menu-button" 
+			label="&label_fixermenubutton;"
+		/>
+		
+		<toolbaritem 
+			id="fixer-status-bar"
+			label="&label_fixerstatusbar;"
+		/>
+	</toolbarpalette>
+</overlay>

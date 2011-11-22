@@ -1,0 +1,7 @@
+<!ENTITY label_statusbar_option "Lav statuslinjeikoner flytbare">
+<!ENTITY label_menubutton_option "Lav Firefox' menuknap flytbar">
+<!ENTITY label_menubar_option "Lav menulinjen flytbar">
+<!ENTITY label_titlebar_option "Vis altid vinduets titellinje">
+<!ENTITY label_newtab_option "Vis &quot;Nyt faneblad&quot; i faneblades genvejsmenu">
+<!ENTITY label_fixermenubutton "Firefox' menuknap">
+<!ENTITY label_fixerstatusbar "Statuslinjeikoner">

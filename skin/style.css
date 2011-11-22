@@ -1,0 +1,25 @@
+﻿
+#fixer-menu-button > #appmenu-toolbar-button ,
+#fixer-menu-button > #appmenu-button{
+	padding: 0 5px;
+	min-width: 0;
+	border-top: 1px solid rgba(83,42,6,.9);
+}
+
+toolbar:not([mode="text"]) #fixer-menu-button > #appmenu-toolbar-button > .toolbarbutton-icon,
+toolbar:not([mode="text"]) #fixer-menu-button > #appmenu-button > .button-box .button-icon {
+	list-style-image: url("chrome://branding/content/icon16.png");
+}
+
+toolbar[mode="icons"] #fixer-menu-button > #appmenu-toolbar-button > .toolbarbutton-text,
+toolbar[mode="icons"] #fixer-menu-button > #appmenu-button > .button-box .button-text {
+	display: none;
+}
+
+#fixer-menu-button[removable="true"] ~ .titlebar-placeholder[type="appmenu-button"] {
+	display: none;
+}
+
+#fixer-status-bar > #status-bar > .statusbar-resizerpanel {
+    display: none;
+}

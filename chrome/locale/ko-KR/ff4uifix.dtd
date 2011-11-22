@@ -1,0 +1,7 @@
+<!ENTITY label_statusbar_option "상태 표시줄 아이콘을 이동 가능하게 만들기">
+<!ENTITY label_menubutton_option "Firefox 메뉴 버튼을 이동 가능하게 만들기">
+<!ENTITY label_menubar_option "도구 모음을 이동 가능하게 만들기">
+<!ENTITY label_titlebar_option "항상 창 제목 표시줄을 표시">
+<!ENTITY label_newtab_option "탭 상황메뉴 내 &quot;새 탭&quot; 표시">
+<!ENTITY label_fixermenubutton "Firefox 메뉴 버튼">
+<!ENTITY label_fixerstatusbar "상태 표시줄 아이콘">

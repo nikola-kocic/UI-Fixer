@@ -1,0 +1,7 @@
+<!ENTITY label_statusbar_option "使狀態列圖示可移動">
+<!ENTITY label_menubutton_option "使 Firefox 選單按鈕可移動">
+<!ENTITY label_menubar_option "使選單列可移動">
+<!ENTITY label_titlebar_option "總是顯示視窗標題列">
+<!ENTITY label_newtab_option "在分頁右鍵選單內顯示「開新分頁」">
+<!ENTITY label_fixermenubutton "Firefox 選單按鈕">
+<!ENTITY label_fixerstatusbar "狀態列圖示">
