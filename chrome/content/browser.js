@@ -62,7 +62,7 @@
 				var fixer_newtabelement = document.createElement("menuitem");
 				fixer_newtabelement.setAttribute("id", "fixer-newtab");
 				fixer_newtabelement.setAttribute("label", newTabMenuItem.label);
-				fixer_newtabelement.setAttribute("oncommand", "BrowserOpenTab()");
+				fixer_newtabelement.addEventListener("click", BrowserOpenTab, false); 
 				
 				var tabcontext = document.getElementById("tabContextMenu");
 				tabcontext.insertBefore(fixer_newtabelement, tabcontext.firstChild);

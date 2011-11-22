@@ -6,14 +6,14 @@
 	<Description about="urn:mozilla:install-manifest">
 
 	<em:id>ff4uifix@nikolakocic.com</em:id>
-	<em:version>1.4.3</em:version>
+	<em:version>1.4.4</em:version>
 	<em:type>2</em:type>
 	
 	<!-- Front End Metadata -->
 	<em:localized>
 		<Description>
 			<em:locale>da</em:locale>
-			<em:name>Firefox 4 UI Fixer</em:name>
+			<em:name>UI Fixer</em:name>
 			<em:description>Ændr placering af statuslinjeikoner, Firefox' menuknap og menulinje med mere.</em:description>
 		</Description>
 	</em:localized>
@@ -21,7 +21,7 @@
 	<em:localized>
 		<Description>
 			<em:locale>de</em:locale>
-			<em:name>Firefox 4 UI Fixer</em:name>
+			<em:name>UI Fixer</em:name>
 			<em:description>Die Position von Statusleisten-Symbolen, Firefox-Menüschaltfläche, Menüleiste und vielem mehr ändern.</em:description>
 		</Description>
 	</em:localized>
@@ -29,7 +29,7 @@
 	<em:localized>
 		<Description>
 			<em:locale>ja</em:locale>
-			<em:name>Firefox 4 UI Fixer</em:name>
+			<em:name>UI Fixer</em:name>
 			<em:description>ステータスバーのアイコン、Firefoxのメニューボタン及びメニューバーの場所の変更、その他</em:description>
 		</Description>
 	</em:localized>
@@ -37,12 +37,12 @@
 	<em:localized>
 		<Description>
 			<em:locale>sv-SE</em:locale>
-			<em:name>Firefox 4 UI Fixer</em:name>
+			<em:name>UI Fixer</em:name>
 			<em:description>Byt plats på statusfältikoner, Firefox menyknapp, menyraden m.m.</em:description>
 		</Description>
 	</em:localized>
 
-	<em:name>Firefox 4 UI Fixer</em:name>
+	<em:name>UI Fixer</em:name>
 	<em:description>Change location of Status Bar Icons, Firefox Menu Button and Menu Bar and more.</em:description>
 	<em:creator>Nikola Kocić</em:creator>
 	<em:optionsURL>chrome://ff4uifix/content/options.xul</em:optionsURL> 
@@ -54,7 +54,7 @@
 		<Description>
 			<em:id>{ec8030f7-c20a-464f-9b0e-13a3a9e97384}</em:id>
 			<em:minVersion>4.0b7</em:minVersion>
-			<em:maxVersion>4.2a1pre</em:maxVersion>
+			<em:maxVersion>11.0a1</em:maxVersion>
 		</Description>
 	</em:targetApplication>
 
@@ -66,10 +66,12 @@
 	<em:translator>wtspout (ko-KR)</em:translator>
 	<em:translator>markh (nl)</em:translator>
 	<em:translator>teo (pl)</em:translator>
+	<em:translator>maurojs10 (pt-BR)</em:translator>
 	<em:translator>lloco (pt-PT)</em:translator>
 	<em:translator>Lakrits (sv-SE)</em:translator>
 	<em:translator>Cye3s (zh-CN)</em:translator>
 	<em:translator>velociraptor (zh-TW)</em:translator>
+	
   </Description>
 
 </RDF>

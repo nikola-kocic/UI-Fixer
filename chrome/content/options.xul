@@ -4,7 +4,7 @@
 <prefwindow
   xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
   id="ff4uifix-options-window"
-  title="Firefox 4 UI Fixer Options">
+  title="UI Fixer Options">
   
 	<script type="application/x-javascript" src="chrome://ff4uifix/content/options.js"/>  
     
