@@ -6,48 +6,48 @@
 	<Description about="urn:mozilla:install-manifest">
 
 	<em:id>ff4uifix@nikolakocic.com</em:id>
-	<em:version>1.4.4</em:version>
+	<em:version>1.5.0beta1</em:version>
 	<em:type>2</em:type>
-	
+
 	<!-- Front End Metadata -->
 	<em:localized>
 		<Description>
 			<em:locale>da</em:locale>
 			<em:name>UI Fixer</em:name>
-			<em:description>Ændr placering af statuslinjeikoner, Firefox' menuknap og menulinje med mere.</em:description>
+			<em:description>Ændr placering af Firefox' menuknap og menulinje med mere.</em:description>
 		</Description>
 	</em:localized>
-	
+
 	<em:localized>
 		<Description>
 			<em:locale>de</em:locale>
 			<em:name>UI Fixer</em:name>
-			<em:description>Die Position von Statusleisten-Symbolen, Firefox-Menüschaltfläche, Menüleiste und vielem mehr ändern.</em:description>
+			<em:description>Die Position von Firefox-Menüschaltfläche, Menüleiste und vielem mehr ändern.</em:description>
 		</Description>
 	</em:localized>
-	
+
 	<em:localized>
 		<Description>
 			<em:locale>ja</em:locale>
 			<em:name>UI Fixer</em:name>
-			<em:description>ステータスバーのアイコン、Firefoxのメニューボタン及びメニューバーの場所の変更、その他</em:description>
+			<em:description>Firefoxのメニューボタン及びメニューバーの場所の変更、その他</em:description>
 		</Description>
 	</em:localized>
-	
+
 	<em:localized>
 		<Description>
 			<em:locale>sv-SE</em:locale>
 			<em:name>UI Fixer</em:name>
-			<em:description>Byt plats på statusfältikoner, Firefox menyknapp, menyraden m.m.</em:description>
+			<em:description>Byt plats på Firefox menyknapp, menyraden m.m.</em:description>
 		</Description>
 	</em:localized>
 
 	<em:name>UI Fixer</em:name>
-	<em:description>Change location of Status Bar Icons, Firefox Menu Button and Menu Bar and more.</em:description>
+	<em:description>Change location of Firefox Menu Button, Menu Bar and more.</em:description>
 	<em:creator>Nikola Kocić</em:creator>
-	<em:optionsURL>chrome://ff4uifix/content/options.xul</em:optionsURL> 
+	<em:optionsURL>chrome://ff4uifix/content/options.xul</em:optionsURL>
 	<em:homepageURL>https://addons.mozilla.org/en-US/firefox/addon/258712/</em:homepageURL>
-	
+
 	<!-- Describe the Firefox versions we support -->
 
 	<em:targetApplication>
@@ -71,7 +71,7 @@
 	<em:translator>Lakrits (sv-SE)</em:translator>
 	<em:translator>Cye3s (zh-CN)</em:translator>
 	<em:translator>velociraptor (zh-TW)</em:translator>
-	
+
   </Description>
 
 </RDF>

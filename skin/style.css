@@ -19,7 +19,3 @@ toolbar[mode="icons"] #fixer-menu-button > #appmenu-button > .button-box .button
 #fixer-menu-button[removable="true"] ~ .titlebar-placeholder[type="appmenu-button"] {
 	display: none;
 }
-
-#fixer-status-bar > #status-bar > .statusbar-resizerpanel {
-    display: none;
-}

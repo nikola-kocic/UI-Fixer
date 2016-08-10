@@ -1,7 +1,5 @@
-<!ENTITY label_statusbar_option "让状态栏按钮可移动">
 <!ENTITY label_menubutton_option "让Firefox菜单按钮可移动">
 <!ENTITY label_menubar_option "让菜单栏可移动">
 <!ENTITY label_titlebar_option "总是显示窗口标题栏">
 <!ENTITY label_newtab_option "在标签右键菜单显示&quot;新建标签页&quot;">
 <!ENTITY label_fixermenubutton "Firefox菜单按钮">
-<!ENTITY label_fixerstatusbar "状态栏图标">

@@ -1,7 +1,5 @@
-<!ENTITY label_statusbar_option "Rendre les icônes de la barre d'état mobiles">
 <!ENTITY label_menubutton_option "Rendre le bouton Menu Firefox mobile">
 <!ENTITY label_menubar_option "Rendre la Barre de Menu mobile">
 <!ENTITY label_titlebar_option "Toujours montrer la Barre de Titre">
 <!ENTITY label_newtab_option "Montrer &quot;Nouvel onglet&quot; dans le menu contextuel des onglets">
 <!ENTITY label_fixermenubutton "Bouton Menu Firefox">
-<!ENTITY label_fixerstatusbar "Icônes de la barre d'état">

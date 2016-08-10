@@ -1,7 +1,5 @@
-<!ENTITY label_statusbar_option "Statusbalkpictogrammen beter verplaatsbaar maken">
 <!ENTITY label_menubutton_option "Firefox-menuknop verplaatsbaar maken">
 <!ENTITY label_menubar_option "Menubalk verplaatsbaar maken">
 <!ENTITY label_titlebar_option "Venstertitelbalk altijd weergeven">
 <!ENTITY label_newtab_option "‘Nieuw tabblad’ in tabbladcontextmenu weergeven">
 <!ENTITY label_fixermenubutton "Firefox-menuknop">
-<!ENTITY label_fixerstatusbar "Statusbalkpictogrammen">

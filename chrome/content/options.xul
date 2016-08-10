@@ -5,26 +5,23 @@
   xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
   id="ff4uifix-options-window"
   title="UI Fixer Options">
-  
-	<script type="application/x-javascript" src="chrome://ff4uifix/content/options.js"/>  
-    
+
+	<script type="application/x-javascript" src="chrome://ff4uifix/content/options.js"/>
+
 	<prefpane>
 		<preferences>
 			<preference id="pref-menu" name="extensions.ff4uifix.menu" type="bool"/>
 			<preference id="pref-newtab" name="extensions.ff4uifix.newtab" type="bool"/>
-			<preference id="pref-statusbar" name="extensions.ff4uifix.statusbarmov" type="bool"/>
 			<preference id="pref-menubar" name="extensions.ff4uifix.classicmenumov" type="bool"/>
 			<preference id="pref-titlebar" name="extensions.ff4uifix.fftitlebar" type="bool"/>
 		</preferences>
-    
+
 		<vbox id="general">
-		<checkbox label="&label_statusbar_option;"
-				  preference="pref-statusbar"/>
 
 		<checkbox label="&label_menubutton_option;"
 				  id="fixer-menu-pref"
 				  preference="pref-menu"/>
-				  
+
 		<checkbox label="&label_menubar_option;"
 				  preference="pref-menubar"/>
 
