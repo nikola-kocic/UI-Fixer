@@ -1,4 +1,4 @@
-﻿var ff4uifix_Options = {
+var ff4uifix_Options = {
 	init : function() {
 		var browserDoc = Components.classes["@mozilla.org/appshell/window-mediator;1"]
 			.getService(Components.interfaces.nsIWindowMediator)
@@ -11,6 +11,6 @@
 			menuPref.hidden = true;
 		}
 	}
-}
+};
 
-window.addEventListener("load", function () { ff4uifix_Options.init(); }, false);
+window.addEventListener("load", () => { ff4uifix_Options.init(); }, false);
