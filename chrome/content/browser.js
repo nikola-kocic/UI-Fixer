@@ -3,7 +3,6 @@
 	_NEW_TAB_PREF : "newtab",
 	_MENUBAR_PREF : "classicmenumov",
 	_prefBranch   : undefined,
-	_showMovableMenu : false,
 	init : function() {
 		//Load Preferences
 		var prefService = Components.classes["@mozilla.org/preferences-service;1"]
@@ -76,69 +75,68 @@
 
 	//Moves Menubar to set location
 	updateMenubar : function (starting) {
-		var fixer_menubarpref = this._prefBranch.getBoolPref(this._MENUBAR_PREF);
-		var fixer_menubar = document.getElementById("fixer-menubar");
+		var fixer_pref = this._prefBranch.getBoolPref(this._MENUBAR_PREF);
+		const fixer_element_id = "fixer-menubar";
+		var fixer_element = document.getElementById(fixer_element_id);
 
-		if (starting == true && fixer_menubarpref == false) {
-			if (fixer_menubar != null) { this.removeButton(fixer_menubar); }
+		if (starting == true && fixer_pref == false) {
+			if (fixer_element != null) { this.removeButton(fixer_element); }
 			return;
 		}
 
-		var menubar = document.getElementById("menubar-items");
+		var org_element = document.getElementById("menubar-items");
 
-		if (menubar == null) {
-			this.removeButton(fixer_menubar);
+		if (org_element == null && fixer_element != null) {
+			this.removeButton(fixer_element);
 			return;
 		}
 
-		var menubartoolbar = document.getElementById(window.CustomizableUI.AREA_MENUBAR);
-
-		if (fixer_menubarpref == true) {
+		if (fixer_pref == true) {
 			// If the Fixer element is not visible, add it to the Navbar
-			if (fixer_menubar == null) {
-				window.CustomizableUI.addWidgetToArea("fixer-menubar", window.CustomizableUI.AREA_MENUBAR);
-				fixer_menubar = document.getElementById("fixer-menubar");
+			if (fixer_element == null) {
+				window.CustomizableUI.addWidgetToArea(fixer_element_id, window.CustomizableUI.AREA_MENUBAR);
+				fixer_element = document.getElementById(fixer_element_id);
 			}
-			fixer_menubar.appendChild(menubar);
-		} else {
-			if (fixer_menubar != null && menubartoolbar != null) {
-				menubartoolbar.insertBefore(menubar, null);
-				this.removeButton(fixer_menubar);
+			fixer_element.appendChild(org_element);
+		} else {  // fixer_pref == false
+			var orgelem_toolbar = document.getElementById(window.CustomizableUI.AREA_MENUBAR);
+			if (fixer_element != null && orgelem_toolbar != null) {
+				orgelem_toolbar.insertBefore(org_element, null);
+				this.removeButton(fixer_element);
 			}
 		}
 	},
 
 	updateMenuButton : function (starting) {
-		this._showMovableMenu = this._prefBranch.getBoolPref(this._MENU_BUTTON_PREF);
-		var fixer_menubutton = document.getElementById("fixer-menu-button");
+		var fixer_pref = this._prefBranch.getBoolPref(this._MENU_BUTTON_PREF);
+		const fixer_element_id = "fixer-menu-button";
+		var fixer_element = document.getElementById(fixer_element_id);
 
-		if (starting == true && this._showMovableMenu == false) {
-			if (fixer_menubutton != null) { this.removeButton(fixer_menubutton); }
+		if (starting == true && fixer_pref == false) {
+			if (fixer_element != null) { this.removeButton(fixer_element); }
 			return;
 		}
 
-		var appbutton = document.getElementById("PanelUI-button");
+		var org_element = document.getElementById("PanelUI-button");
 
-		if (appbutton == null) {
-			this.removeButton(fixer_menubutton);
+		if (org_element == null && fixer_element != null) {
+			this.removeButton(fixer_element);
 			return;
 		}
 
-		var navbar = document.getElementById("nav-bar");
-		var windowcontrols = document.getElementById("window-controls");
-
-		if (this._showMovableMenu == true) {
+		if (fixer_pref == true) {
 			// If the Fixer element is not visible, add it to the Navbar
-			if (fixer_menubutton == null && windowcontrols != null) {
-				window.CustomizableUI.addWidgetToArea("fixer-menu-button", window.CustomizableUI.AREA_NAVBAR);
-				fixer_menubutton = document.getElementById("fixer-menu-button");
+			if (fixer_element == null) {
+				window.CustomizableUI.addWidgetToArea(fixer_element_id, window.CustomizableUI.AREA_NAVBAR);
+				fixer_element = document.getElementById(fixer_element_id);
 			}
-			fixer_menubutton.appendChild(appbutton);
-		}
-		else {
-			if (fixer_menubutton != null && navbar != null) {
-				navbar.insertBefore(appbutton, windowcontrols);
-				this.removeButton(fixer_menubutton);
+			fixer_element.appendChild(org_element);
+		} else {  // fixer_pref == false
+			var orgelem_toolbar = document.getElementById(window.CustomizableUI.AREA_NAVBAR);
+			var windowcontrols = document.getElementById("window-controls");
+			if (fixer_element != null && orgelem_toolbar != null) {
+				orgelem_toolbar.insertBefore(org_element, windowcontrols);
+				this.removeButton(fixer_element);
 			}
 		}
 	},
