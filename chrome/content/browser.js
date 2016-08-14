@@ -2,14 +2,14 @@
 /* global CustomizableUI */
 /* global BrowserOpenTab */
 
-var ff4uifix_Fixer = {
+const ff4uifix_Fixer = {
   _MENU_BUTTON_PREF: "menu",
   _NEW_TAB_PREF : "newtab",
   _MENUBAR_PREF : "classicmenumov",
   _prefBranch   : undefined,
   init : function() {
     //Load Preferences
-    var prefService = Components.classes["@mozilla.org/preferences-service;1"]
+    const prefService = Components.classes["@mozilla.org/preferences-service;1"]
                       .getService(Components.interfaces.nsIPrefService);
     this._prefBranch = prefService.getBranch("extensions.ff4uifix.");
     this._prefBranch.QueryInterface(Components.interfaces.nsIPrefBranch2);
@@ -41,18 +41,18 @@ var ff4uifix_Fixer = {
 
   //Shows/hides "New Tab" option in Tab Context Menu
   updateNewtab : function () {
-    var fixer_newtabpref = this._prefBranch.getBoolPref(this._NEW_TAB_PREF);
+    const fixer_newtabpref = this._prefBranch.getBoolPref(this._NEW_TAB_PREF);
 
-    var fixer_newtab = document.getElementById("fixer-newtab");
+    const fixer_newtab = document.getElementById("fixer-newtab");
     if (fixer_newtabpref == true) {
       if (fixer_newtab == null) {
-        var newTabMenuItem = document.getElementById("menu_newNavigatorTab");
-        var fixer_newtabelement = document.createElement("menuitem");
+        const newTabMenuItem = document.getElementById("menu_newNavigatorTab");
+        const fixer_newtabelement = document.createElement("menuitem");
         fixer_newtabelement.setAttribute("id", "fixer-newtab");
         fixer_newtabelement.setAttribute("label", newTabMenuItem.label);
         fixer_newtabelement.addEventListener("click", BrowserOpenTab, false);
 
-        var tabcontext = document.getElementById("tabContextMenu");
+        const tabcontext = document.getElementById("tabContextMenu");
         tabcontext.insertBefore(fixer_newtabelement, tabcontext.firstChild);
       } else {
         fixer_newtab.hidden = false;
@@ -64,7 +64,7 @@ var ff4uifix_Fixer = {
 
   updateElement: function(fixer_pref_id, fixer_element_id, org_element_id, area, before_element_id) {
     const fixer_pref = this._prefBranch.getBoolPref(fixer_pref_id);
-    var fixer_element = document.getElementById(fixer_element_id);
+    let fixer_element = document.getElementById(fixer_element_id);
 
     if (fixer_pref == true) {
       // If the Fixer element is not visible, add it to the Navbar
@@ -111,7 +111,7 @@ var ff4uifix_Fixer = {
   },
 
   updatePrefOnCustomizationChange: function(fixer_pref_id, fixer_element_id) {
-    var fixer_pref = this._prefBranch.getBoolPref(fixer_pref_id);
+    const fixer_pref = this._prefBranch.getBoolPref(fixer_pref_id);
     const fixer_element_visible = this.isElementPlaced(fixer_element_id);
     if (fixer_pref !== fixer_element_visible) {
       this._prefBranch.setBoolPref(fixer_pref_id, fixer_element_visible);

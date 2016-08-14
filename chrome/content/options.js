@@ -1,15 +1,15 @@
 /* global Components */
 
-var ff4uifix_Options = {
+const ff4uifix_Options = {
   init : function() {
-    var browserDoc = Components.classes["@mozilla.org/appshell/window-mediator;1"]
+    const browserDoc = Components.classes["@mozilla.org/appshell/window-mediator;1"]
                      .getService(Components.interfaces.nsIWindowMediator)
                      .getMostRecentWindow("navigator:browser").document;
 
     //Hide "Make Firefox Menu Button Movable" if it's not supported in browser
-    var appbuttonHandle = browserDoc.getElementById("PanelUI-menu-button");
+    const appbuttonHandle = browserDoc.getElementById("PanelUI-menu-button");
     if (appbuttonHandle == null) {
-      var menuPref = document.getElementById("fixer-menu-pref");
+      const menuPref = document.getElementById("fixer-menu-pref");
       menuPref.hidden = true;
     }
   }
