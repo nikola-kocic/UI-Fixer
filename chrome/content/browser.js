@@ -1,3 +1,7 @@
+/* global Components */
+/* global CustomizableUI */
+/* global BrowserOpenTab */
+
 var ff4uifix_Fixer = {
   _MENU_BUTTON_PREF: "menu",
   _NEW_TAB_PREF : "newtab",

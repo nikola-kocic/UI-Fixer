@@ -1,3 +1,5 @@
+/* global Components */
+
 var ff4uifix_Options = {
   init : function() {
     var browserDoc = Components.classes["@mozilla.org/appshell/window-mediator;1"]
