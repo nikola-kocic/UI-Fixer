@@ -59,10 +59,8 @@
 		}
 	},
 
-	removeButton : function (buttonHandle) {
-		if (buttonHandle != null) {
-			window.CustomizableUI.removeWidgetFromArea(buttonHandle.id);
-		}
+	removeButton: function(element_id) {
+		window.CustomizableUI.removeWidgetFromArea(element_id);
 	},
 
 	updateElement: function(starting, fixer_pref_id, fixer_element_id, org_element_id, area, before_element) {
@@ -70,14 +68,14 @@
 		var fixer_element = document.getElementById(fixer_element_id);
 
 		if (starting == true && fixer_pref == false) {
-			if (fixer_element != null) { this.removeButton(fixer_element); }
+			if (fixer_element != null) { this.removeButton(fixer_element_id); }
 			return;
 		}
 
 		var org_element = document.getElementById(org_element_id);
 
 		if (org_element == null && fixer_element != null) {
-			this.removeButton(fixer_element);
+			this.removeButton(fixer_element_id);
 			return;
 		}
 
@@ -92,7 +90,7 @@
 			var orgelem_toolbar = document.getElementById(area);
 			if (fixer_element != null && orgelem_toolbar != null) {
 				orgelem_toolbar.insertBefore(org_element, before_element);
-				this.removeButton(fixer_element);
+				this.removeButton(fixer_element_id);
 			}
 		}
 	},
