@@ -13,7 +13,6 @@
 			<preference id="pref-menu" name="extensions.ff4uifix.menu" type="bool"/>
 			<preference id="pref-newtab" name="extensions.ff4uifix.newtab" type="bool"/>
 			<preference id="pref-menubar" name="extensions.ff4uifix.classicmenumov" type="bool"/>
-			<preference id="pref-titlebar" name="extensions.ff4uifix.fftitlebar" type="bool"/>
 		</preferences>
 
 		<vbox id="general">
@@ -24,10 +23,6 @@
 
 		<checkbox label="&label_menubar_option;"
 				  preference="pref-menubar"/>
-
-		<checkbox label="&label_titlebar_option;"
-				  id="fixer-titlebar-pref"
-				  preference="pref-titlebar"/>
 
 		<checkbox label="&label_newtab_option;"
 				  preference="pref-newtab"/>

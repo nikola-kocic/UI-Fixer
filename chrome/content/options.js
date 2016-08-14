@@ -10,13 +10,6 @@
 			var menuPref = document.getElementById("fixer-menu-pref");
 			menuPref.hidden = true;
 		}
-
-		//Hide "Always Show Window Titlebar" if it's not supported in browser
-		var titlebar = browserDoc.getElementById("titlebar");
-		if (titlebar == null) {
-			var titlebarPref = document.getElementById("fixer-titlebar-pref");
-			titlebarPref.hidden = true;
-		}
 	}
 }
 

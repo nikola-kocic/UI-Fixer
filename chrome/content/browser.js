@@ -2,16 +2,9 @@
 	_MENU_BUTTON_PREF: "menu",
 	_NEW_TAB_PREF : "newtab",
 	_MENUBAR_PREF : "classicmenumov",
-	_TITLEBAR_PREF : "fftitlebar",
 	_prefBranch   : undefined,
-	_ORIGupdateAppButtonDisplay : undefined,
 	_showMovableMenu : false,
 	init : function() {
-
-		// Keep original updateAppButtonDisplay function
-		try { this._ORIGupdateAppButtonDisplay = window.updateAppButtonDisplay; }
-		catch (e) { }
-
 		//Load Preferences
 		var prefService = Components.classes["@mozilla.org/preferences-service;1"]
 									.getService(Components.interfaces.nsIPrefService);
@@ -22,13 +15,11 @@
 		this.updateNewtab(true);
 		this.updateMenuButton(true);
 		this.updateMenubar(true);
-		this.updateTitlebar(true);
 
 		//Add Preference Changed Events
 		this._prefBranch.addObserver(this._MENU_BUTTON_PREF, this, false);
 		this._prefBranch.addObserver(this._NEW_TAB_PREF, this, false);
 		this._prefBranch.addObserver(this._MENUBAR_PREF, this, false);
-		this._prefBranch.addObserver(this._TITLEBAR_PREF, this, false);
 	},
 
 	observe : function (aSubject, aTopic, aData) {
@@ -41,8 +32,6 @@
 			this.updateMenuButton(false);
 		else if (aData == this._MENUBAR_PREF)
 			this.updateMenubar(false);
-		else if (aData == this._TITLEBAR_PREF)
-			this.updateTitlebar(false);
 	},
 
 	//Shows/hides "New Tab" option in Tab Context Menu
@@ -85,43 +74,6 @@
 		}
 	},
 
-	updateTitlebarLayout : function(){
-		var titlebar = document.getElementById("titlebar");
-		if (titlebar != null) {
-			let docElement = document.documentElement;
-			if (docElement.getAttribute("tabsintitlebar") == "true") {
-				TabsInTitlebar.allowedBy("pref", false);
-				TabsInTitlebar.allowedBy("pref", true);
-			}
-		}
-	},
-
-	//Changed updateAppButtonDisplay function to disable custom Titlebar
-	fixer_updateAppButtonDisplay : function () {
-		let titlebar = document.getElementById("titlebar");
-		if (titlebar != null) {
-			titlebar.hidden = true;
-			document.documentElement.removeAttribute("chromemargin");
-		}
-	},
-
-	updateTitlebar : function (starting) {
-		var fixer_titlebarpref = this._prefBranch.getBoolPref(this._TITLEBAR_PREF);
-		if (starting == true && fixer_titlebarpref == false) { return; }
-
-		if (fixer_titlebarpref == true){
-			window.updateAppButtonDisplay = this.fixer_updateAppButtonDisplay;
-			TabsInTitlebar.allowedBy("pref", false);
-			updateAppButtonDisplay();
-		}
-		else {
-			window.updateAppButtonDisplay = this._ORIGupdateAppButtonDisplay;
-			TabsInTitlebar._readPref();
-			updateAppButtonDisplay();
-			this.updateTitlebarLayout();
-		}
-	},
-
 	//Moves Menubar to set location
 	updateMenubar : function (starting) {
 		var fixer_menubarpref = this._prefBranch.getBoolPref(this._MENUBAR_PREF);
@@ -153,10 +105,6 @@
 				menubartoolbar.insertBefore(menubar, null);
 				this.removeButton(fixer_menubar);
 			}
-		}
-
-		if (starting == false){
-			this.updateTitlebarLayout();
 		}
 	},
 
@@ -192,10 +140,6 @@
 				navbar.insertBefore(appbutton, windowcontrols);
 				this.removeButton(fixer_menubutton);
 			}
-		}
-
-		if (starting == false){
-			this.updateTitlebarLayout();
 		}
 	},
 
