@@ -1,5 +1,5 @@
 ﻿var ff4uifix_Fixer = {
-	_MENU_PREF    : "menu",
+	_MENU_BUTTON_PREF: "menu",
 	_NEW_TAB_PREF : "newtab",
 	_MENUBAR_PREF : "classicmenumov",
 	_TITLEBAR_PREF : "fftitlebar",
@@ -25,7 +25,7 @@
 		this.updateTitlebar(true);
 
 		//Add Preference Changed Events
-		this._prefBranch.addObserver(this._MENU_PREF, this, false);
+		this._prefBranch.addObserver(this._MENU_BUTTON_PREF, this, false);
 		this._prefBranch.addObserver(this._NEW_TAB_PREF, this, false);
 		this._prefBranch.addObserver(this._MENUBAR_PREF, this, false);
 		this._prefBranch.addObserver(this._TITLEBAR_PREF, this, false);
@@ -37,7 +37,7 @@
 
 		if (aData == this._NEW_TAB_PREF)
 			this.updateNewtab(false);
-		else if (aData == this._MENU_PREF)
+		else if (aData == this._MENU_BUTTON_PREF)
 			this.updateMenuButton(false);
 		else if (aData == this._MENUBAR_PREF)
 			this.updateMenubar(false);
@@ -157,7 +157,7 @@
 	},
 
 	updateMenuButton : function (starting) {
-		this._showMovableMenu = this._prefBranch.getBoolPref(this._MENU_PREF);
+		this._showMovableMenu = this._prefBranch.getBoolPref(this._MENU_BUTTON_PREF);
 		var fixer_menubutton = document.getElementById("fixer-menu-button");
 
 		if (starting == true && this._showMovableMenu == false && fixer_menubutton != null) { this.removeButton(fixer_menubutton); }
@@ -198,7 +198,7 @@
 	CustomizationChange : function () {
 
 		//Movable Firefox Menu Button
-		var fixer_menupref = this._prefBranch.getBoolPref(this._MENU_PREF);
+		var fixer_menupref = this._prefBranch.getBoolPref(this._MENU_BUTTON_PREF);
 		var fixer_menubutton = document.getElementById("fixer-menu-button");
 		if (fixer_menupref == true && fixer_menubutton == null) {
 				//If fixer-menu-button is removed from toolbars, return appmenu-button element to appmenu-button-container and deactivate "Make Firefox Menu Button movable"
@@ -209,10 +209,10 @@
 				this.updateToolbar(tabtoolbar, tabtoolbar.currentSet);
 
 				//Set pref to false (also removes fixer-menu-button element)
-				this._prefBranch.setBoolPref(this._MENU_PREF, false);
+				this._prefBranch.setBoolPref(this._MENU_BUTTON_PREF, false);
 		}
 		else if (fixer_menupref == false && fixer_menubutton != null) {
-			this._prefBranch.setBoolPref(this._MENU_PREF, true);
+			this._prefBranch.setBoolPref(this._MENU_BUTTON_PREF, true);
 		}
 
 		//Movable Menu Bar
@@ -227,7 +227,7 @@
 	},
 
 	cleanup : function () {
-		this._prefBranch.removeObserver(this._MENU_PREF, this);
+		this._prefBranch.removeObserver(this._MENU_BUTTON_PREF, this);
 		this._prefBranch.removeObserver(this._NEW_TAB_PREF, this);
 		this._prefBranch.removeObserver(this._MENUBAR_PREF, this);
 	}
