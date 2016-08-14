@@ -81,14 +81,7 @@
 
 	removeButton : function (buttonHandle) {
 		if (buttonHandle != null) {
-			var menuparent = buttonHandle.parentNode;
-			var newset = menuparent.getAttribute("currentset").split(",");
-			var i = newset.indexOf(buttonHandle.id);
-			if (i>=0) {
-				newset.splice(i, 1);
-				newset = newset.join(",");
-				this.updateToolbar(menuparent, newset);
-			}
+			window.CustomizableUI.removeWidgetFromArea(buttonHandle.id);
 		}
 	},
 
@@ -160,8 +153,10 @@
 		this._showMovableMenu = this._prefBranch.getBoolPref(this._MENU_BUTTON_PREF);
 		var fixer_menubutton = document.getElementById("fixer-menu-button");
 
-		if (starting == true && this._showMovableMenu == false && fixer_menubutton != null) { this.removeButton(fixer_menubutton); }
-		if (starting == true && this._showMovableMenu == false) { return; }
+		if (starting == true && this._showMovableMenu == false) {
+			if (fixer_menubutton != null) { this.removeButton(fixer_menubutton); }
+			return;
+		}
 
 		var appbutton = document.getElementById("PanelUI-button");
 
@@ -174,11 +169,9 @@
 		var windowcontrols = document.getElementById("window-controls");
 
 		if (this._showMovableMenu == true) {
-			//If Movable Firefox Menu button is not visible, add it at start of Navigation Toolbar
+			// If the Fixer element is not visible, add it to the Navbar
 			if (fixer_menubutton == null && windowcontrols != null) {
 				window.CustomizableUI.addWidgetToArea("fixer-menu-button", window.CustomizableUI.AREA_NAVBAR);
-				this.updateToolbar(navbar, navbar.currentSet);
-
 				fixer_menubutton = document.getElementById("fixer-menu-button");
 			}
 			fixer_menubutton.appendChild(appbutton);
@@ -195,24 +188,17 @@
 		}
 	},
 
-	CustomizationChange : function () {
+	isElementPlaced: function(aWidgetId) {
+		const element_placed = window.CustomizableUI.getPlacementOfWidget(aWidgetId) !== null;
+		return element_placed;
+	},
 
+	CustomizationChange : function () {
 		//Movable Firefox Menu Button
 		var fixer_menupref = this._prefBranch.getBoolPref(this._MENU_BUTTON_PREF);
-		var fixer_menubutton = document.getElementById("fixer-menu-button");
-		if (fixer_menupref == true && fixer_menubutton == null) {
-				//If fixer-menu-button is removed from toolbars, return appmenu-button element to appmenu-button-container and deactivate "Make Firefox Menu Button movable"
-
-				//Place fixer-menu-button on nav-bar (so appmenu-button element is accessible)
-				var tabtoolbar = document.getElementById("TabsToolbar");
-				tabtoolbar.insertItem("fixer-menu-button", tabtoolbar.firstChild, null, false);
-				this.updateToolbar(tabtoolbar, tabtoolbar.currentSet);
-
-				//Set pref to false (also removes fixer-menu-button element)
-				this._prefBranch.setBoolPref(this._MENU_BUTTON_PREF, false);
-		}
-		else if (fixer_menupref == false && fixer_menubutton != null) {
-			this._prefBranch.setBoolPref(this._MENU_BUTTON_PREF, true);
+		const fixer_menubutton_visible = this.isElementPlaced("fixer-menu-button");
+		if (fixer_menupref !== fixer_menubutton_visible) {
+			this._prefBranch.setBoolPref(this._MENU_BUTTON_PREF, fixer_menubutton_visible);
 		}
 
 		//Movable Menu Bar
