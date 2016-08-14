@@ -15,4 +15,4 @@ locale ff4uifix sv-SE chrome/locale/sv-SE/
 locale ff4uifix zh-CN chrome/locale/zh-CN/
 locale ff4uifix zh-TW chrome/locale/zh-TW/
 
-overlay	chrome://browser/content/browser.xul chrome://ff4uifix/content/browser.xul
+overlay chrome://browser/content/browser.xul chrome://ff4uifix/content/browser.xul
