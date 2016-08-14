@@ -2,4 +2,5 @@
 <!ENTITY label_menubar_option "Make Menu Bar Movable">
 <!ENTITY label_titlebar_option "Always Show Window Titlebar">
 <!ENTITY label_newtab_option "Show &quot;New Tab&quot; in Tab Context Menu">
-<!ENTITY label_fixermenubutton "Firefox Menu Button">
+<!ENTITY label_fixermenubutton "Movable Menu Button">
+<!ENTITY label_fixermenubar "Movable Menu Bar">

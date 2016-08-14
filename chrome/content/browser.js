@@ -125,27 +125,38 @@
 	//Moves Menubar to set location
 	updateMenubar : function (starting) {
 		var fixer_menubarpref = this._prefBranch.getBoolPref(this._MENUBAR_PREF);
-		if (starting == true && fixer_menubarpref == false) { return; }
+		var fixer_menubar = document.getElementById("fixer-menubar");
+
+		if (starting == true && fixer_menubarpref == false) {
+			if (fixer_menubar != null) { this.removeButton(fixer_menubar); }
+			return;
+		}
 
 		var menubar = document.getElementById("menubar-items");
 
-		if(fixer_menubarpref == true) {
-			menubar.setAttribute("removable", "true");
+		if (menubar == null) {
+			this.removeButton(fixer_menubar);
+			return;
 		}
 
-		else {
-			var menutoolbar = document.getElementById("toolbar-menubar");
-			if(menubar == null){
-				menutoolbar.insertItem("menubar-items", null, null, false);
-				this.updateToolbar(menutoolbar, menutoolbar.currentSet);
-				menubar = document.getElementById("menubar-items");
+		var menubartoolbar = document.getElementById(window.CustomizableUI.AREA_MENUBAR);
+
+		if (fixer_menubarpref == true) {
+			// If the Fixer element is not visible, add it to the Navbar
+			if (fixer_menubar == null) {
+				window.CustomizableUI.addWidgetToArea("fixer-menubar", window.CustomizableUI.AREA_MENUBAR);
+				fixer_menubar = document.getElementById("fixer-menubar");
 			}
-			if(menubar.parentNode.id != menutoolbar.id){
-				var oldtoolbar = menubar.parentNode;
-				menutoolbar.appendChild(menubar);
-				this.updateToolbar(oldtoolbar, oldtoolbar.currentSet);
+			fixer_menubar.appendChild(menubar);
+		} else {
+			if (fixer_menubar != null && menubartoolbar != null) {
+				menubartoolbar.insertBefore(menubar, null);
+				this.removeButton(fixer_menubar);
 			}
-			menubar.removeAttribute("removable");
+		}
+
+		if (starting == false){
+			this.updateTitlebarLayout();
 		}
 	},
 
@@ -203,12 +214,9 @@
 
 		//Movable Menu Bar
 		var fixer_menubarpref = this._prefBranch.getBoolPref(this._MENUBAR_PREF);
-		var menubar = document.getElementById("menubar-items");
-		if (fixer_menubarpref == true && menubar == null) {
-				//If menubar-items is removed from toolbars, return menubar-items element to toolbar-menubar and deactivate "Make Menu Bar movable"
-
-				//Set pref to false (and restore menubar-items default position)
-				this._prefBranch.setBoolPref(this._MENUBAR_PREF, false);
+		const fixer_menubar_visible = this.isElementPlaced("fixer-menubar");
+		if (fixer_menubarpref !== fixer_menubar_visible) {
+			this._prefBranch.setBoolPref(this._MENUBAR_PREF, fixer_menubar_visible);
 		}
 	},
 

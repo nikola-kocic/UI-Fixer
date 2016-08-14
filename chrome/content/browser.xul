@@ -13,5 +13,9 @@
 			id="fixer-menu-button"
 			label="&label_fixermenubutton;"
 		/>
+		<toolbaritem
+			id="fixer-menubar"
+			label="&label_fixermenubar;"
+		/>
 	</toolbarpalette>
 </overlay>
