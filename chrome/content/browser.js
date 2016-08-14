@@ -59,14 +59,6 @@
 		}
 	},
 
-	updateToolbar : function (toolbar, set) {
-		toolbar.setAttribute("currentset", set);
-		toolbar.currentSet = set;
-		window.document.persist(toolbar.id, "currentset");
-		try { BrowserToolboxCustomizeDone(true); }
-		catch (e) { }
-	},
-
 	removeButton : function (buttonHandle) {
 		if (buttonHandle != null) {
 			window.CustomizableUI.removeWidgetFromArea(buttonHandle.id);
