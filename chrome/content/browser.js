@@ -73,10 +73,8 @@
 		}
 	},
 
-	//Moves Menubar to set location
-	updateMenubar : function (starting) {
-		var fixer_pref = this._prefBranch.getBoolPref(this._MENUBAR_PREF);
-		const fixer_element_id = "fixer-menubar";
+	updateElement: function(starting, fixer_pref_id, fixer_element_id, org_element_id, area, before_element) {
+		var fixer_pref = this._prefBranch.getBoolPref(fixer_pref_id);
 		var fixer_element = document.getElementById(fixer_element_id);
 
 		if (starting == true && fixer_pref == false) {
@@ -84,7 +82,7 @@
 			return;
 		}
 
-		var org_element = document.getElementById("menubar-items");
+		var org_element = document.getElementById(org_element_id);
 
 		if (org_element == null && fixer_element != null) {
 			this.removeButton(fixer_element);
@@ -94,51 +92,28 @@
 		if (fixer_pref == true) {
 			// If the Fixer element is not visible, add it to the Navbar
 			if (fixer_element == null) {
-				window.CustomizableUI.addWidgetToArea(fixer_element_id, window.CustomizableUI.AREA_MENUBAR);
+				window.CustomizableUI.addWidgetToArea(fixer_element_id, area);
 				fixer_element = document.getElementById(fixer_element_id);
 			}
 			fixer_element.appendChild(org_element);
 		} else {  // fixer_pref == false
-			var orgelem_toolbar = document.getElementById(window.CustomizableUI.AREA_MENUBAR);
+			var orgelem_toolbar = document.getElementById(area);
 			if (fixer_element != null && orgelem_toolbar != null) {
-				orgelem_toolbar.insertBefore(org_element, null);
+				orgelem_toolbar.insertBefore(org_element, before_element);
 				this.removeButton(fixer_element);
 			}
 		}
 	},
 
+	updateMenubar : function (starting) {
+		this.updateElement(starting, this._MENUBAR_PREF, "fixer-menubar",
+			"menubar-items", window.CustomizableUI.AREA_MENUBAR, null);
+	},
+
 	updateMenuButton : function (starting) {
-		var fixer_pref = this._prefBranch.getBoolPref(this._MENU_BUTTON_PREF);
-		const fixer_element_id = "fixer-menu-button";
-		var fixer_element = document.getElementById(fixer_element_id);
-
-		if (starting == true && fixer_pref == false) {
-			if (fixer_element != null) { this.removeButton(fixer_element); }
-			return;
-		}
-
-		var org_element = document.getElementById("PanelUI-button");
-
-		if (org_element == null && fixer_element != null) {
-			this.removeButton(fixer_element);
-			return;
-		}
-
-		if (fixer_pref == true) {
-			// If the Fixer element is not visible, add it to the Navbar
-			if (fixer_element == null) {
-				window.CustomizableUI.addWidgetToArea(fixer_element_id, window.CustomizableUI.AREA_NAVBAR);
-				fixer_element = document.getElementById(fixer_element_id);
-			}
-			fixer_element.appendChild(org_element);
-		} else {  // fixer_pref == false
-			var orgelem_toolbar = document.getElementById(window.CustomizableUI.AREA_NAVBAR);
-			var windowcontrols = document.getElementById("window-controls");
-			if (fixer_element != null && orgelem_toolbar != null) {
-				orgelem_toolbar.insertBefore(org_element, windowcontrols);
-				this.removeButton(fixer_element);
-			}
-		}
+		const before_element = document.getElementById("window-controls");
+		this.updateElement(starting, this._MENU_BUTTON_PREF, "fixer-menu-button",
+			"PanelUI-button", window.CustomizableUI.AREA_NAVBAR, before_element);
 	},
 
 	isElementPlaced: function(aWidgetId) {
@@ -146,20 +121,17 @@
 		return element_placed;
 	},
 
-	CustomizationChange : function () {
-		//Movable Firefox Menu Button
-		var fixer_menupref = this._prefBranch.getBoolPref(this._MENU_BUTTON_PREF);
-		const fixer_menubutton_visible = this.isElementPlaced("fixer-menu-button");
-		if (fixer_menupref !== fixer_menubutton_visible) {
-			this._prefBranch.setBoolPref(this._MENU_BUTTON_PREF, fixer_menubutton_visible);
+	updatePrefOnCustomizationChange: function(fixer_pref_id, fixer_element_id) {
+		var fixer_pref = this._prefBranch.getBoolPref(fixer_pref_id);
+		const fixer_element_visible = this.isElementPlaced(fixer_element_id);
+		if (fixer_pref !== fixer_element_visible) {
+			this._prefBranch.setBoolPref(fixer_pref_id, fixer_element_visible);
 		}
+	},
 
-		//Movable Menu Bar
-		var fixer_menubarpref = this._prefBranch.getBoolPref(this._MENUBAR_PREF);
-		const fixer_menubar_visible = this.isElementPlaced("fixer-menubar");
-		if (fixer_menubarpref !== fixer_menubar_visible) {
-			this._prefBranch.setBoolPref(this._MENUBAR_PREF, fixer_menubar_visible);
-		}
+	CustomizationChange : function () {
+		this.updatePrefOnCustomizationChange(this._MENU_BUTTON_PREF, "fixer-menu-button");
+		this.updatePrefOnCustomizationChange(this._MENUBAR_PREF, "fixer-menubar");
 	},
 
 	cleanup : function () {
@@ -167,7 +139,7 @@
 		this._prefBranch.removeObserver(this._NEW_TAB_PREF, this);
 		this._prefBranch.removeObserver(this._MENUBAR_PREF, this);
 	}
-}
+};
 
 window.addEventListener("load", function () { ff4uifix_Fixer.init(); }, false);
 window.addEventListener("customizationchange", function () { ff4uifix_Fixer.CustomizationChange(); }, false);
