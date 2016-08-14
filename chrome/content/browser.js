@@ -59,39 +59,38 @@
 		}
 	},
 
-	removeButton: function(element_id) {
-		window.CustomizableUI.removeWidgetFromArea(element_id);
-	},
-
-	updateElement: function(starting, fixer_pref_id, fixer_element_id, org_element_id, area, before_element) {
-		var fixer_pref = this._prefBranch.getBoolPref(fixer_pref_id);
+	updateElement: function(starting, fixer_pref_id, fixer_element_id, org_element_id, area, before_element_id) {
+		const fixer_pref = this._prefBranch.getBoolPref(fixer_pref_id);
 		var fixer_element = document.getElementById(fixer_element_id);
 
-		if (starting == true && fixer_pref == false) {
-			if (fixer_element != null) { this.removeButton(fixer_element_id); }
-			return;
-		}
+		if (fixer_pref == false) {
+			if (fixer_element != null) {
+				const listener = {
+					onWidgetBeforeDOMChange: function(aNode, aNextNode, aContainer, aIsRemoval) {
+						if (aIsRemoval && aNode.id == fixer_element_id) {
+							const d = aNode.ownerDocument;
 
-		var org_element = document.getElementById(org_element_id);
-
-		if (org_element == null && fixer_element != null) {
-			this.removeButton(fixer_element_id);
-			return;
-		}
-
-		if (fixer_pref == true) {
+							const before_element = before_element_id == null ? null : d.getElementById(before_element_id);
+							const org_element = d.getElementById(org_element_id);
+							if (org_element != null) {
+								const orgelem_toolbar = d.getElementById(area);
+								orgelem_toolbar.insertBefore(org_element, before_element);
+							}
+						}
+					}.bind(this)
+				};
+				CustomizableUI.addListener(listener);
+				CustomizableUI.removeWidgetFromArea(fixer_element_id);
+				CustomizableUI.removeListener(listener);
+			}
+		} else { // fixer_pref == true
 			// If the Fixer element is not visible, add it to the Navbar
 			if (fixer_element == null) {
-				window.CustomizableUI.addWidgetToArea(fixer_element_id, area);
+				CustomizableUI.addWidgetToArea(fixer_element_id, area);
 				fixer_element = document.getElementById(fixer_element_id);
 			}
+			const org_element = document.getElementById(org_element_id);
 			fixer_element.appendChild(org_element);
-		} else {  // fixer_pref == false
-			var orgelem_toolbar = document.getElementById(area);
-			if (fixer_element != null && orgelem_toolbar != null) {
-				orgelem_toolbar.insertBefore(org_element, before_element);
-				this.removeButton(fixer_element_id);
-			}
 		}
 	},
 
@@ -101,9 +100,8 @@
 	},
 
 	updateMenuButton : function (starting) {
-		const before_element = document.getElementById("window-controls");
 		this.updateElement(starting, this._MENU_BUTTON_PREF, "fixer-menu-button",
-			"PanelUI-button", window.CustomizableUI.AREA_NAVBAR, before_element);
+			"PanelUI-button", CustomizableUI.AREA_NAVBAR, "window-controls");
 	},
 
 	isElementPlaced: function(aWidgetId) {
