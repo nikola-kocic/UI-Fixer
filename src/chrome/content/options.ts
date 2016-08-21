@@ -8,7 +8,7 @@ const ff4uifix_Options = (function ff4uifix_Options_f() {
       .getMostRecentWindow("navigator:browser").document
     );
 
-    //Hide "Make Firefox Menu Button Movable" if it's not supported in browser
+    // Hide "Make Firefox Menu Button Movable" if it's not supported in browser
     const appbuttonHandle = browserDoc.getElementById("PanelUI-menu-button");
     if (appbuttonHandle == null) {
       const menuPref = document.getElementById("fixer-menu-pref");
