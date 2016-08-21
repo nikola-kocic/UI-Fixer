@@ -2,12 +2,18 @@
 /* global CustomizableUI */
 /* global BrowserOpenTab */
 
+type Mapping = {
+  fixer_pref_id: string,
+  org_element_id: string,
+  area: string,
+  before_element_id: string | null,
+}
+
 const ff4uifix_Fixer = (function ff4uifix_Fixer_f() {
   const _MENU_BUTTON_PREF = "menu";
   const _NEW_TAB_PREF = "newtab";
   const _MENUBAR_PREF = "classicmenumov";
-  let _prefBranch = null;
-  const _mappings = {
+  const _mappings: {[key: string]: Mapping} = {
     "fixer-menu-button" : {
       fixer_pref_id: "menu",
       org_element_id: "PanelUI-button",
@@ -22,7 +28,12 @@ const ff4uifix_Fixer = (function ff4uifix_Fixer_f() {
     },
   };
 
-  function printState(prefix, mapkey, d) {
+  //Load Preferences
+  const prefService = Components.classes["@mozilla.org/preferences-service;1"]
+                    .getService(Components.interfaces.nsIPrefService);
+  const _prefBranch = prefService.getBranch("extensions.ff4uifix.");
+
+  function printState(prefix: string, mapkey: string, d: Document) {
     const map = _mappings[mapkey];
     const fixer_element_placement = CustomizableUI.getPlacementOfWidget(mapkey);
     const fixer_element = d.getElementById(mapkey);
@@ -32,7 +43,7 @@ const ff4uifix_Fixer = (function ff4uifix_Fixer_f() {
 , fixer_element_placement=${JSON.stringify(fixer_element_placement)}\
 , fixer_element=${fixer_element ? "true" : "false"}\
 , org_element=${org_element ? "true" : "false"}\
-, org_element parent=${org_element ? org_element.parentNode.id : "N/A"}`
+, org_element parent=${org_element ? (org_element.parentNode as HTMLElement).id : "N/A"}`
       //, `document = ${d.title}`
     );
   }
@@ -47,11 +58,13 @@ const ff4uifix_Fixer = (function ff4uifix_Fixer_f() {
         const newTabMenuItem = document.getElementById("menu_newNavigatorTab");
         const fixer_newtabelement = document.createElement("menuitem");
         fixer_newtabelement.setAttribute("id", "fixer-newtab");
-        fixer_newtabelement.setAttribute("label", newTabMenuItem.label);
+        fixer_newtabelement.setAttribute("label", (newTabMenuItem as any).label);
         fixer_newtabelement.addEventListener("click", BrowserOpenTab, false);
 
         const tabcontext = document.getElementById("tabContextMenu");
-        tabcontext.insertBefore(fixer_newtabelement, tabcontext.firstChild);
+        if (tabcontext) {
+          tabcontext.insertBefore(fixer_newtabelement, tabcontext.firstChild);
+        }
       } else {
         fixer_newtab.hidden = false;
       }
@@ -60,15 +73,17 @@ const ff4uifix_Fixer = (function ff4uifix_Fixer_f() {
     }
   }
 
-  function restoreOriginalElement(d, org_element, area, before_element_id) {
+  function restoreOriginalElement(d: Document, org_element: HTMLElement, area: string, before_element_id: string | null) {
     const before_element = before_element_id == null ? null : d.getElementById(before_element_id);
     if (org_element != null) {
       const orgelem_toolbar = d.getElementById(area);
-      orgelem_toolbar.insertBefore(org_element, before_element);
+      if (orgelem_toolbar) {
+        orgelem_toolbar.insertBefore(org_element, before_element);
+      }
     }
   }
 
-  function updateElement(d, fixer_pref, fixer_element_id, org_element_id, area, before_element_id) {
+  function updateElement(d: Document, fixer_pref: boolean, fixer_element_id: string, org_element_id: string, area: string, before_element_id: string | null) {
     printState("updateElement", fixer_element_id, d);
     const fixer_element_visible = (CustomizableUI.getPlacementOfWidget(fixer_element_id) != null);
     // If element is not placed, if customize toolbar is open,
@@ -76,9 +91,11 @@ const ff4uifix_Fixer = (function ff4uifix_Fixer_f() {
     const org_element = d.getElementById(org_element_id);
     if (fixer_pref == true) {
       if (fixer_element_visible) {
-        if (org_element.parentNode.id != fixer_element_id) {
+        if (org_element && (org_element.parentNode as HTMLElement).id != fixer_element_id) {
           const fixer_element = d.getElementById(fixer_element_id);
-          fixer_element.appendChild(org_element);
+          if (fixer_element) {
+            fixer_element.appendChild(org_element);
+          }
         }
       } else {  // fixer_element_visible == false
         // Add fixer element, callback will move the original element inside
@@ -86,13 +103,15 @@ const ff4uifix_Fixer = (function ff4uifix_Fixer_f() {
       }
     } else { // fixer_pref == false
       if (fixer_element_visible) {
-        restoreOriginalElement(d, org_element, area, before_element_id);
+        if (org_element) {
+          restoreOriginalElement(d, org_element, area, before_element_id);
+        }
         CustomizableUI.removeWidgetFromArea(fixer_element_id);
       } else {  // fixer_element_visible == false
         if (!org_element) {
           // TODO: CustomizableUI:Widget 'PanelUI-button' not found, unable to move
           CustomizableUI.addWidgetToArea(org_element_id, area);
-        } else if (org_element.parentNode.id == fixer_element_id) {
+        } else if ((org_element.parentNode as HTMLElement).id == fixer_element_id) {
           restoreOriginalElement(d, org_element, area, before_element_id);
         }
       }
@@ -113,7 +132,7 @@ const ff4uifix_Fixer = (function ff4uifix_Fixer_f() {
       map.org_element_id, map.area, map.before_element_id);
   }
 
-  function updatePrefOnCustomizationChange(fixer_pref_id, fixer_element_id) {
+  function updatePrefOnCustomizationChange(fixer_pref_id: string, fixer_element_id: string) {
     const fixer_pref = _prefBranch.getBoolPref(fixer_pref_id);
     const fixer_element_visible = (CustomizableUI.getPlacementOfWidget(fixer_element_id) != null);
     if (fixer_pref !== fixer_element_visible) {
@@ -124,7 +143,7 @@ const ff4uifix_Fixer = (function ff4uifix_Fixer_f() {
     return false;
   }
 
-  const prefObserver = {
+  const prefObserver: IObserver = {
     observe(aSubject, aTopic, aData) {
       if (aTopic != "nsPref:changed") {
         return;
@@ -141,12 +160,6 @@ const ff4uifix_Fixer = (function ff4uifix_Fixer_f() {
   };
 
   function init() {
-    //Load Preferences
-    const prefService = Components.classes["@mozilla.org/preferences-service;1"]
-                      .getService(Components.interfaces.nsIPrefService);
-    _prefBranch = prefService.getBranch("extensions.ff4uifix.");
-    _prefBranch.QueryInterface(Components.interfaces.nsIPrefBranch2);
-
     //Update UI
     updateNewtab();
     updateMenuButton();
@@ -157,7 +170,7 @@ const ff4uifix_Fixer = (function ff4uifix_Fixer_f() {
     _prefBranch.addObserver(_NEW_TAB_PREF, prefObserver, false);
     _prefBranch.addObserver(_MENUBAR_PREF, prefObserver, false);
 
-    const listener = {
+    const listener: ICustomizeObserver = {
       onWidgetBeforeDOMChange(aNode, aNextNode, aContainer, aIsRemoval) {
         if ({}.hasOwnProperty.call(_mappings, aNode.id)) {
           if (aIsRemoval) {

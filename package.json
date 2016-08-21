@@ -3,7 +3,8 @@
   "version": "1.5.0",
   "description": "",
   "scripts": {
-    "pack": "mkdir -p build && cd ./src && zip -r ../build/ui-fixer-$(date +'%Y%m%d-%H%M%S').xpi chrome/ defaults/ skin/ chrome.manifest install.rdf"
+    "build": "tsc",
+    "pack": "tsc && mkdir -p build && mkdir -p output && rsync -a --exclude='*.ts' src/ output/ && cd ./output && zip -r ../build/ui-fixer-$(date +'%Y%m%d-%H%M%S').xpi chrome/ defaults/ skin/ chrome.manifest install.rdf"
   },
   "repository": {
     "type": "git",
@@ -16,6 +17,7 @@
   },
   "homepage": "https://github.com/nikola-kocic/UI-Fixer#readme",
   "devDependencies": {
-    "eslint": "^3.3.1"
+    "eslint": "^3.3.1",
+    "typescript": "^2.1.0-dev.20160821"
   }
 }
