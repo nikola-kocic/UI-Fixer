@@ -134,7 +134,8 @@ const ff4uifix_Fixer = (function ff4uifix_Fixer_f() {
 
   function updatePrefOnCustomizationChange(fixer_pref_id: string, fixer_element_id: string) {
     const fixer_pref = _prefBranch.getBoolPref(fixer_pref_id);
-    const fixer_element_visible = (CustomizableUI.getPlacementOfWidget(fixer_element_id) != null);
+    const fixer_element_placement = CustomizableUI.getPlacementOfWidget(fixer_element_id);
+    const fixer_element_visible = (fixer_element_placement != null && fixer_element_placement.area != CustomizableUI.AREA_PANEL);
     if (fixer_pref !== fixer_element_visible) {
       printState("updatePrefOnCustomizationChange", fixer_element_id, document);
       _prefBranch.setBoolPref(fixer_pref_id, fixer_element_visible);

@@ -1,7 +1,8 @@
 declare var CustomizableUI: {
   AREA_NAVBAR: string;
   AREA_MENUBAR: string;
-  getPlacementOfWidget(aWidgetId: string): Object;
+  AREA_PANEL: string;
+  getPlacementOfWidget(aWidgetId: string): {area: string, position: number};
   addWidgetToArea(aWidgetId: string, aAreaId: string, aPosition?: number): void;
   removeWidgetFromArea(aWidgetId: string): void;
   addListener(aListener: ICustomizeObserver): void;
