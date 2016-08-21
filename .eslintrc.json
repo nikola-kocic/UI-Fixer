@@ -34,7 +34,7 @@
         ],
         "callback-return": "error",
         "camelcase": "off",
-        "comma-dangle": "error",
+        "comma-dangle": ["error", "only-multiline"],
         "comma-spacing": [
             "error",
             {
@@ -65,9 +65,9 @@
         "func-call-spacing": "error",
         "func-names": [
             "error",
-            "never"
+            "always"
         ],
-        "func-style": "error",
+        "func-style": ["error", "declaration"],
         "generator-star-spacing": "error",
         "global-require": "error",
         "guard-for-in": "error",
@@ -217,7 +217,7 @@
             "double"
         ],
         "radix": "error",
-        "require-jsdoc": "error",
+        "require-jsdoc": "off",
         "rest-spread-spacing": "error",
         "semi": "error",
         "semi-spacing": "error",

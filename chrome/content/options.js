@@ -1,7 +1,7 @@
 /* global Components */
 
-const ff4uifix_Options = {
-  init : function() {
+const ff4uifix_Options = (function ff4uifix_Options_f() {
+  function init() {
     const browserDoc = Components.classes["@mozilla.org/appshell/window-mediator;1"]
                      .getService(Components.interfaces.nsIWindowMediator)
                      .getMostRecentWindow("navigator:browser").document;
@@ -13,6 +13,7 @@ const ff4uifix_Options = {
       menuPref.hidden = true;
     }
   }
-};
+  return {init: init};
+}());
 
 window.addEventListener("load", () => { ff4uifix_Options.init(); }, false);
