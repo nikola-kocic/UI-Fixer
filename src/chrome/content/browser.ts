@@ -33,21 +33,6 @@ const ff4uifix_Fixer = (function ff4uifix_Fixer_f() {
                     .getService(Components.interfaces.nsIPrefService);
   const _prefBranch: IPrefBranch = prefService.getBranch("extensions.ff4uifix.");
 
-  function printState(prefix: string, mapkey: string, d: Document): void {
-    const map = _mappings[mapkey];
-    const fixer_element_placement = CustomizableUI.getPlacementOfWidget(mapkey);
-    const fixer_element = d.getElementById(mapkey);
-    const org_element = d.getElementById(map.org_element_id);
-    const fixer_pref = _prefBranch.getBoolPref(map.fixer_pref_id);
-    console.log(`${prefix}, id=${mapkey}, fixer_pref=${fixer_pref}\
-, fixer_element_placement=${JSON.stringify(fixer_element_placement)}\
-, fixer_element=${fixer_element ? "true" : "false"}\
-, org_element=${org_element ? "true" : "false"}\
-, org_element parent=${org_element ? (org_element.parentNode as HTMLElement).id : "N/A"}`
-      // , `document = ${d.title}`
-    );
-  }
-
   // Shows/hides "New Tab" option in Tab Context Menu
   function updateNewtab(): void {
     const fixer_newtabpref = _prefBranch.getBoolPref(_NEW_TAB_PREF);
@@ -87,7 +72,6 @@ const ff4uifix_Fixer = (function ff4uifix_Fixer_f() {
   }
 
   function updateElement(d: Document, fixer_pref: boolean, fixer_element_id: string, org_element_id: string, area: string, before_element_id: string | null): boolean {
-    printState("updateElement", fixer_element_id, d);
     const fixer_element_visible = (CustomizableUI.getPlacementOfWidget(fixer_element_id) != null);
     // If element is not placed, if customize toolbar is open,
     // we can still access it using getElementById
@@ -146,7 +130,6 @@ const ff4uifix_Fixer = (function ff4uifix_Fixer_f() {
     const fixer_element_placement = CustomizableUI.getPlacementOfWidget(fixer_element_id);
     const fixer_element_visible = (fixer_element_placement !== null && fixer_element_placement.area !== CustomizableUI.AREA_PANEL);
     if (fixer_pref !== fixer_element_visible) {
-      printState("updatePrefOnCustomizationChange", fixer_element_id, document);
       _prefBranch.setBoolPref(fixer_pref_id, fixer_element_visible);
       return true;
     }
@@ -185,7 +168,6 @@ const ff4uifix_Fixer = (function ff4uifix_Fixer_f() {
         if ({}.hasOwnProperty.call(_mappings, aNode.id)) {
           if (aIsRemoval) {
             const d = aNode.ownerDocument;
-            printState("onWidgetBeforeDOMChange aIsRemoval", aNode.id, d);
             const map = _mappings[aNode.id];
             if (updatePrefOnCustomizationChange(map.fixer_pref_id, aNode.id) === false) {
               // const fixer_pref = _prefBranch.getBoolPref(map.fixer_pref_id);
@@ -196,7 +178,6 @@ const ff4uifix_Fixer = (function ff4uifix_Fixer_f() {
       },
       onWidgetAdded(aWidgetId, aArea, aPosition) {
         if ({}.hasOwnProperty.call(_mappings, aWidgetId)) {
-          printState(`onWidgetAdded, area=${aArea}, position=${aPosition}`, aWidgetId, document);
           const map = _mappings[aWidgetId];
           if (updatePrefOnCustomizationChange(map.fixer_pref_id, aWidgetId) === false) {
             const fixer_pref = _prefBranch.getBoolPref(map.fixer_pref_id);
@@ -205,25 +186,12 @@ const ff4uifix_Fixer = (function ff4uifix_Fixer_f() {
           }
         }
       },
-      onWidgetRemoved(aWidgetId, aArea) {
-        if ({}.hasOwnProperty.call(_mappings, aWidgetId)) {
-          printState(`onWidgetRemoved, area=${aArea}`, aWidgetId, document);
-          // const map = _mappings[aWidgetId];
-          // updatePrefOnCustomizationChange(map.fixer_pref_id, aWidgetId);
-        }
-      },
-      onWidgetAfterDOMChange(aNode, aNextNode, aContainer, aWasRemoval) {
-        if ({}.hasOwnProperty.call(_mappings, aNode.id)) {
-          console.log(`onWidgetAfterDOMChange, aNode.id = ${aNode.id}, aWasRemoval = ${aWasRemoval}`);
-        }
-      },
       onAreaReset(aArea, aContainer) {
         // use const after https://bugzilla.mozilla.org/show_bug.cgi?id=1101653 is fixed
         // eslint-disable-next-line prefer-const
         for (let k of Object.keys(_mappings)) {
           const map = _mappings[k];
           if (map.area === aArea) {
-            printState(`onAreaReset, area=${aArea}, aContainer.id=${aContainer.id}`, k, document);
             const fixer_pref = _prefBranch.getBoolPref(map.fixer_pref_id);
             if (fixer_pref) {
               CustomizableUI.addWidgetToArea(k, aArea);
@@ -231,50 +199,6 @@ const ff4uifix_Fixer = (function ff4uifix_Fixer_f() {
           }
         }
       },
-      onWidgetReset(aNode, aContainer) {
-        if ({}.hasOwnProperty.call(_mappings, aNode.id)) {
-          console.log(`onWidgetReset, aNode.id=${aNode.id}, aContainer.id=${aContainer.id}`);
-        }
-      },
-      onWidgetMoved(aWidgetId, aArea, aOldPosition, aNewPosition) {
-        console.log(`onWidgetMoved, aWidgetId=${aWidgetId}, aArea=${aArea}, aOldPosition=${aOldPosition}, aNewPosition=${aNewPosition}`);
-      },
-      onWidgetUndoMove(aNode, aContainer) {
-        console.log(`onWidgetUndoMove, aNode.id=${aNode.id}, aContainer=${aContainer}`);
-      },
-      onAreaNodeUnregistered(aArea, aNode, aReason) {
-        console.log(`onAreaNodeUnregistered aArea=${aArea}, aNode.id=${aNode.id}, aReason=${aReason}`);
-      },
-      onAreaNodeRegistered(aArea, aNode) {
-        console.log(`onAreaNodeRegistered aArea=${aArea}, aNode.id=${aNode.id}`);
-      },
-      onWidgetCreated(aWidgetId) {
-        console.log(`onWidgetCreated aWidgetId=${aWidgetId}`);
-      },
-      onWidgetAfterCreation(aWidgetId, aArea) {
-        console.log(`onWidgetAfterCreation aWidgetId=${aWidgetId}, aArea=${aArea}`);
-      },
-      onWidgetDestroyed(aWidgetId) {
-        console.log(`onWidgetDestroyed aWidgetId=${aWidgetId}`);
-      },
-      onWidgetInstanceRemoved(aWidgetId/*, aDocument*/) {
-        console.log(`onWidgetInstanceRemoved aWidgetId=${aWidgetId}`);
-      },
-      // onWidgetDrag(aWidgetId, aArea) {
-      //   console.log("onWidgetDrag");
-      // },
-      // onCustomizeStart(aWindow) {
-      //   console.log("onCustomizeStart");
-      // },
-      // onCustomizeEnd(aWindow) {
-      //   console.log("onCustomizeEnd");
-      // },
-      // onWidgetOverflow(aNode, aContainer) {
-      //   console.log("onWidgetOverflow");
-      // },
-      // onWidgetUnderflow(aNode, aContainer) {
-      //   console.log("onWidgetUnderflow");
-      // }
     };
     CustomizableUI.addListener(listener);
   }
