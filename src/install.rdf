@@ -10,37 +10,6 @@
     <em:multiprocessCompatible>true</em:multiprocessCompatible>
 
     <!-- Front End Metadata -->
-    <em:localized>
-      <Description>
-        <em:locale>da</em:locale>
-        <em:name>UI Fixer</em:name>
-        <em:description>Ændr placering af Firefox' menuknap og menulinje med mere.</em:description>
-      </Description>
-    </em:localized>
-
-    <em:localized>
-      <Description>
-        <em:locale>de</em:locale>
-        <em:name>UI Fixer</em:name>
-        <em:description>Die Position von Firefox-Menüschaltfläche, Menüleiste und vielem mehr ändern.</em:description>
-      </Description>
-    </em:localized>
-
-    <em:localized>
-      <Description>
-        <em:locale>ja</em:locale>
-        <em:name>UI Fixer</em:name>
-        <em:description>Firefoxのメニューボタン及びメニューバーの場所の変更、その他</em:description>
-      </Description>
-    </em:localized>
-
-    <em:localized>
-      <Description>
-        <em:locale>sv-SE</em:locale>
-        <em:name>UI Fixer</em:name>
-        <em:description>Byt plats på Firefox menyknapp, menyraden m.m.</em:description>
-      </Description>
-    </em:localized>
 
     <em:name>UI Fixer</em:name>
     <em:description>Change location of Firefox Menu Button, Menu Bar and more.</em:description>
@@ -57,23 +26,5 @@
         <em:maxVersion>*</em:maxVersion>
       </Description>
     </em:targetApplication>
-
-    <em:translator>Ivaylo (bg-BG)</em:translator>
-    <em:translator>CatTranslations (ca)</em:translator>
-    <em:translator>Joergen (da)</em:translator>
-    <em:translator>erglo (de)</em:translator>
-    <em:translator>milupo (dsb)</em:translator>
-    <em:translator>milupo (eo)</em:translator>
-    <em:translator>freMea (fr)</em:translator>
-    <em:translator>milupo (hsb)</em:translator>
-    <em:translator>Haebaru (ja)</em:translator>
-    <em:translator>wtspout (ko-KR)</em:translator>
-    <em:translator>markh (nl)</em:translator>
-    <em:translator>teo (pl)</em:translator>
-    <em:translator>maurojs10 (pt-BR)</em:translator>
-    <em:translator>lloco (pt-PT)</em:translator>
-    <em:translator>Lakrits (sv-SE)</em:translator>
-    <em:translator>Cye3s (zh-CN)</em:translator>
-    <em:translator>velociraptor (zh-TW)</em:translator>
   </Description>
 </RDF>
