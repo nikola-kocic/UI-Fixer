@@ -1,10 +1,10 @@
 {
   "name": "ui-fixer",
-  "version": "1.5.0",
+  "version": "1.5.1",
   "description": "",
   "scripts": {
     "build": "tsc",
-    "pack": "tsc && mkdir -p build && mkdir -p output && rsync -a --delete --exclude='*.ts' src/ output/ && cd ./output && zip -r ../build/ui-fixer-$(date +'%Y%m%d-%H%M%S').xpi chrome/ defaults/ skin/ chrome.manifest install.rdf"
+    "pack": "mkdir -p build && mkdir -p output && rsync -a --delete --exclude='*.ts' src/ output/ && tsc && cd ./output && zip -r ../build/ui-fixer-$(date +'%Y%m%d-%H%M%S').xpi chrome/ defaults/ skin/ chrome.manifest install.rdf"
   },
   "repository": {
     "type": "git",
