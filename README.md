@@ -11,3 +11,7 @@ To move elements after activating option, enter the [Customize mode](https://sup
 [Official versions here (AMO)](https://addons.mozilla.org/en-US/firefox/addon/firefox-4-ui-fixer/).
 
 [Contribute translations here](https://crowdin.com/project/firefox-extension-ui-fixer).
+
+![Screenshot of UI Fixer Demo](https://raw.githubusercontent.com/nikola-kocic/UI-Fixer/master/screenshots/ui-fixer-demo.png)
+
+![Screenshot of UI Fixer Options Dialog](https://raw.githubusercontent.com/nikola-kocic/UI-Fixer/master/screenshots/ui-fixer-options-dialog.png)
