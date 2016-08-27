@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   viewBox="0 0 552 315"
+   height="315"
+   width="552"
+   version="1.1"
+   id="svg17630">
+  <metadata
+     id="metadata17636">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs17634">
+    <marker
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker15257"
+       style="overflow:visible">
+      <path
+         id="path15259"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.625;stroke-linejoin:round;stroke-opacity:1"
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         transform="matrix(1.1,0,0,1.1,1.1,0)" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="Arrow2Lstart"
+       refX="0"
+       refY="0"
+       orient="auto">
+      <path
+         transform="matrix(1.1,0,0,1.1,1.1,0)"
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.625;stroke-linejoin:round;stroke-opacity:1"
+         id="path4284" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="Arrow2Lstart-2"
+       refX="0"
+       refY="0"
+       orient="auto">
+      <path
+         transform="matrix(1.1,0,0,1.1,1.1,0)"
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.625;stroke-linejoin:round;stroke-opacity:1"
+         id="path4284-9" />
+    </marker>
+  </defs>
+  <image
+     xlink:href="ui-fixer-demo-clean.png"
+     y="0"
+     x="0"
+     id="image18367"
+     preserveAspectRatio="none"
+     height="315"
+     width="552" />
+  <path
+     id="path3460"
+     d="m 35.317753,61.117298 c 26.88001,87.999142 26.88001,87.999142 26.88001,87.999142 l 0,0 0,0"
+     style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1.99999988;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-start:url(#marker15257)" />
+  <rect
+     ry="4"
+     rx="4"
+     y="149.31453"
+     x="9.8505421"
+     height="54.056458"
+     width="135.01161"
+     id="rect9426"
+     style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+  <text
+     id="text9396"
+     y="171.29881"
+     x="77.234268"
+     style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     xml:space="preserve"><tspan
+       style="font-size:20px;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-opacity:1"
+       y="171.29881"
+       x="77.234268"
+       id="tspan9398">Movable</tspan><tspan
+       style="font-size:20px;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-opacity:1"
+       id="tspan9402"
+       y="196.29881"
+       x="77.234268">Menu Button</tspan></text>
+  <path
+     id="path3460-7"
+     d="M 142.57567,94.073358 C 161.26909,215.911 161.26909,215.911 161.26909,215.911 l 0,0 0,0"
+     style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-start:url(#Arrow2Lstart)" />
+  <rect
+     ry="4"
+     rx="3.9999998"
+     y="214.94576"
+     x="55.880234"
+     height="61.056458"
+     width="135.5116"
+     id="rect9426-6"
+     style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+  <text
+     id="text9396-5"
+     y="240.43004"
+     x="122.66435"
+     style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     xml:space="preserve"><tspan
+       style="font-size:20px;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-opacity:1"
+       y="240.43004"
+       x="122.66435"
+       id="tspan9398-3">Movable</tspan><tspan
+       style="font-size:20px;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-opacity:1"
+       id="tspan9402-5"
+       y="265.43005"
+       x="122.66435">Menu Bar</tspan></text>
+  <path
+     id="path3460-7-1"
+     d="M 282.81497,26.632887 C 444.3483,150.61866 444.3483,150.61866 444.3483,150.61866 l 0,0 0,0"
+     style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-start:url(#Arrow2Lstart-2)" />
+  <rect
+     ry="4"
+     rx="3.9999998"
+     y="150.64696"
+     x="395.71014"
+     height="61.056458"
+     width="113.5116"
+     id="rect9426-6-9"
+     style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+  <text
+     id="text9396-5-2"
+     y="174.19276"
+     x="452.47571"
+     style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     xml:space="preserve"><tspan
+       style="font-size:20px;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-opacity:1"
+       id="tspan9402-5-0"
+       y="174.19276"
+       x="452.47571">&quot;New tab&quot;</tspan><tspan
+       id="tspan16996"
+       style="font-size:20px;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-opacity:1"
+       y="199.19276"
+       x="452.47571">Option</tspan></text>
+</svg>
